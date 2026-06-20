@@ -10,11 +10,13 @@ import UIKit
 class TodoListViewController: UITableViewController {
     
     let todoItems = ["First Item", "Second Item", "Third Item", "Fourth Item", "Fifth Item"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
+    
+    // MARK: - TableView DataSource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItems.count
@@ -27,7 +29,19 @@ class TodoListViewController: UITableViewController {
         
         return cell
     }
-
-
+    
+    // MARK: - TableView Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        if selectedCell?.accessoryType == .checkmark {
+            selectedCell?.accessoryType = .none
+        } else {
+            selectedCell?.accessoryType = .checkmark
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
 
