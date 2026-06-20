@@ -9,11 +9,13 @@ import UIKit
 
 class TodoListViewController: UITableViewController {
     
-    let todoItems = ["First Item", "Second Item", "Third Item", "Fourth Item", "Fifth Item"]
+    var todoItems = ["First Item", "Second Item", "Third Item", "Fourth Item", "Fifth Item"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if #available(iOS 26.0, *) {
+            navigationItem.rightBarButtonItem?.hidesSharedBackground = true
+        }
     }
     
     // MARK: - TableView DataSource Methods
@@ -43,5 +45,25 @@ class TodoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // MARK: - Add New Items
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add Item", style: .default) { action in
+            self.todoItems.append(textField.text!)
+            self.tableView.reloadData()
+        }
+        
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "Create New Item"
+            textField = alertTextField
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
 }
 
