@@ -6,12 +6,12 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController: UITableViewController {
     
     var todoItems :[Item] = []
-    
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Item.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     
     override func viewDidLoad() {
@@ -62,15 +62,16 @@ class TodoListViewController: UITableViewController {
         let alert = UIAlertController(title: "Add New Item", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Item", style: .default) { action in
-            let newAddedItem = Item()
+            
+            let newAddedItem = Item(context: self.context)
             
             newAddedItem.title = textField.text!
+            newAddedItem.done = false
             
             self.todoItems.append(newAddedItem)
             
             self.saveItems()
             
-            self.tableView.reloadData()
         }
         
         alert.addTextField { alertTextField in
@@ -85,25 +86,22 @@ class TodoListViewController: UITableViewController {
     // MARK: - Model Manpulation method
     
     func saveItems() {
-        let encoder = PropertyListEncoder()
-        
         do {
-            let data = try encoder.encode(todoItems)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print(error)
+            print("Error saving context: \(error)")
         }
+        self.tableView.reloadData()
     }
     
     func loadItems() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            do {
-                todoItems = try decoder.decode([Item].self, from: data)
-            } catch {
-                print("Error decoding items, \(error)")
-            }
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        do {
+            todoItems = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context: \(error)")
         }
+        
     }
 }
 
