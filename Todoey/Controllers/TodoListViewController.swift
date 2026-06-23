@@ -62,7 +62,7 @@ class TodoListViewController: UITableViewController {
                 print("Error saving done status: \(error)")
             }
         }
-            
+        
         tableView.reloadData()
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -112,24 +112,18 @@ class TodoListViewController: UITableViewController {
 extension TodoListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //        let request: NSFetchRequest<Item> = Item.fetchRequest()
-        //
-        //        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        //
-        //        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        //
-        //        loadItems(with: request, predicate: predicate)
+        todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        
+        tableView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        //        if searchBar.text?.count == 0 {
-        //            loadItems()
-        //
-        //            DispatchQueue.main.async {
-        //                searchBar.resignFirstResponder()
-        //            }
-        //
-        //        }
+        if searchBar.text?.count == 0 {
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
     
 }
