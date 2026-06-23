@@ -42,7 +42,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="TmR-my-vaH" kind="show" id="fFU-WB-bsu"/>
+                        <segue destination="TmR-my-vaH" kind="show" identifier="goToItems" id="fFU-WB-bsu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nuf-XM-gZe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
