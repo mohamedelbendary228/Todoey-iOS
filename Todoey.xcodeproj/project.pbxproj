@@ -16,6 +16,7 @@
 		F00FE7AB2FEAB7D200109952 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FE7AA2FEAB7D200109952 /* Item.swift */; };
 		F00FE7AD2FEACBAA00109952 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FE7AC2FEACBAA00109952 /* Category.swift */; };
 		F07E30902FE9676200540982 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E308F2FE9676200540982 /* CategoryViewController.swift */; };
+		F09123662FEC8B35006C6072 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = F09123652FEC8B35006C6072 /* SwipeCellKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F09123662FEC8B35006C6072 /* SwipeCellKit in Frameworks */,
 				F00FE7A92FEAB64D00109952 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +156,7 @@
 			mainGroup = EB2BE4ED239524DB00FB933B;
 			packageReferences = (
 				F00FE7A52FEAB64D00109952 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				F09123642FEC8B35006C6072 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = EB2BE4F7239524DB00FB933B /* Products */;
 			projectDirPath = "";
@@ -404,6 +407,14 @@
 				kind = branch;
 			};
 		};
+		F09123642FEC8B35006C6072 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -411,6 +422,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F00FE7A52FEAB64D00109952 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		F09123652FEC8B35006C6072 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F09123642FEC8B35006C6072 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
