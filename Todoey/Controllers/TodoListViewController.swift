@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import DynamicColor
 
 class TodoListViewController: SwipeTableViewController {
     
@@ -37,8 +38,24 @@ class TodoListViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = todoItems?[indexPath.row] {
+            
             cell.textLabel?.text = item.title
+            
             cell.accessoryType = item.done ? .checkmark : .none
+            
+            if let colorHex = selectedCategory?.colour {
+                let categoryColor = UIColor(hexString: colorHex)
+                guard let count = todoItems?.count, count > 0 else { return cell }
+                
+                let darkenedColor = categoryColor.darkened(amount: 0.4)
+                let gradient = DynamicGradient(colors: [categoryColor, darkenedColor])
+                
+                let ratio = CGFloat(indexPath.row) / CGFloat(count)
+                cell.backgroundColor = gradient.pickColorAt(scale: ratio)
+                
+                cell.textLabel?.textColor = categoryColor.isLight() ? .black : .white
+            }
+            
         } else {
             cell.textLabel?.text = "No Added Items"
         }
