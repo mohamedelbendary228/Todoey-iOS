@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import DynamicColor
 
 class CategoryViewController: SwipeTableViewController {
     
@@ -19,6 +20,7 @@ class CategoryViewController: SwipeTableViewController {
         super.viewDidLoad()
     
         loadCategories()
+        
     }
     
     
@@ -30,9 +32,15 @@ class CategoryViewController: SwipeTableViewController {
         let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
         
         let action = UIAlertAction(title: "Add Category", style: .default) { action in
-            
+                
             let newCategory = Category()
             newCategory.name = textField.text!
+            newCategory.colour = UIColor(
+                hue: CGFloat.random(in: 0...1),
+                saturation: CGFloat.random(in: 0.5...0.9),  // avoid washed-out colors
+                brightness: CGFloat.random(in: 0.5...0.9),  // avoid too dark/light
+                alpha: 1.0
+            ).toHexString()
             
             self.saveCategories(category: newCategory)
         }
@@ -57,8 +65,9 @@ class CategoryViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
-    
-        cell.textLabel?.text = categories?[indexPath.row].name ?? "No Added Categories"
+        let category = categories?[indexPath.row]
+        cell.textLabel?.text = category?.name ?? "No Added Categories"
+        cell.backgroundColor = UIColor(hexString: category?.colour ?? "1D9BF6")
         
         return cell
     }

@@ -1,6 +1,15 @@
 {
-  "originHash" : "ec78f22959569d43de3ff326a7cc4d03c3d4c69ce788bf41cd28cfcda482b125",
+  "originHash" : "d9e5d5facc4de7119bef56eeac06c31142de6ceaec0db73923af37035ece5479",
   "pins" : [
+    {
+      "identity" : "dynamiccolor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yannickl/DynamicColor",
+      "state" : {
+        "revision" : "d9beca13ca85baa50ee29832d0db5129fba69630",
+        "version" : "5.0.1"
+      }
+    },
     {
       "identity" : "realm-core",
       "kind" : "remoteSourceControl",

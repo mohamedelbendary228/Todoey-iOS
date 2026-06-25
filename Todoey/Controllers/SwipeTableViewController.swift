@@ -9,6 +9,7 @@
 import SwipeCellKit
 import UIKit
 
+
 class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegate {
     
     override func viewDidLoad() {
@@ -19,6 +20,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         }
        
         tableView.rowHeight = 80.0
+        tableView.separatorStyle = .none
     }
     
     // MARK: - TableView DataSource Methods

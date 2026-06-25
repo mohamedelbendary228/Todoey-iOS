@@ -16,6 +16,7 @@
 		F00FE7AB2FEAB7D200109952 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FE7AA2FEAB7D200109952 /* Item.swift */; };
 		F00FE7AD2FEACBAA00109952 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00FE7AC2FEACBAA00109952 /* Category.swift */; };
 		F03BFC352FED4EDC00B1F903 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03BFC342FED4EDC00B1F903 /* SwipeTableViewController.swift */; };
+		F03BFC382FED5CCE00B1F903 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = F03BFC372FED5CCE00B1F903 /* DynamicColor */; };
 		F07E30902FE9676200540982 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07E308F2FE9676200540982 /* CategoryViewController.swift */; };
 		F09123662FEC8B35006C6072 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = F09123652FEC8B35006C6072 /* SwipeCellKit */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F09123662FEC8B35006C6072 /* SwipeCellKit in Frameworks */,
+				F03BFC382FED5CCE00B1F903 /* DynamicColor in Frameworks */,
 				F00FE7A92FEAB64D00109952 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -160,6 +162,7 @@
 			packageReferences = (
 				F00FE7A52FEAB64D00109952 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				F09123642FEC8B35006C6072 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
+				F03BFC362FED5CCE00B1F903 /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = EB2BE4F7239524DB00FB933B /* Products */;
 			projectDirPath = "";
@@ -411,6 +414,14 @@
 				kind = branch;
 			};
 		};
+		F03BFC362FED5CCE00B1F903 /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		F09123642FEC8B35006C6072 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit";
@@ -426,6 +437,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F00FE7A52FEAB64D00109952 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		F03BFC372FED5CCE00B1F903 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F03BFC362FED5CCE00B1F903 /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 		F09123652FEC8B35006C6072 /* SwipeCellKit */ = {
 			isa = XCSwiftPackageProductDependency;
